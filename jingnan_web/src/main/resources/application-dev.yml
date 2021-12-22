@@ -1,0 +1,36 @@
+server:
+  port: 9001
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jingnan_all?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
+  redis:
+    host: 192.168.68.135
+    port: 6379
+  elasticsearch:
+    rest:
+      uris:
+        - http://192.168.68.129:9200
+    # 配置RabbitMQ消息中间件连接配置
+  rabbitmq:
+    host: 192.168.68.147
+    port: 5672
+    username: admin
+    password: admin
+      #配置RabbitMQ虚拟主机路径/，默认可以省略
+    virtual-host: /
+
+# id生成器IdWorker配置
+workerId: 0
+datacenterId: 0
+
+
+wxpay:
+  notify_url: http://xmyrws.natappfree.cc/wpay/notify #回调地址
+
+# 生成静态页的位置
+pagepath: ~/static/items

@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: jingnan_web
+  profiles:
+    active: dev

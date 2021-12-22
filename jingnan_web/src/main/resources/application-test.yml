@@ -1,0 +1,47 @@
+server:
+  port: 9001
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///jingnan_all?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    #配置RabbitMQ虚拟主机路径/，默认可以省略
+    virtual-host: /
+  redis:
+    host: localhost
+    port: 6379
+  elasticsearch:
+    rest:
+      uris:
+        - http://localhost:9200
+# id生成器IdWorker配置
+workerId: 0
+datacenterId: 0
+wxpay:
+  notify_url: http://xmyrws.natappfree.cc/wpay/notify #回调地址
+# 生成静态页的位置
+pagepath: ~/static/items
+
+#TODO 1. tomcat 服务调优
+#server.tomcat.uri-encoding: UTF-8
+#server.tomcat.accept-count: 1000 # 等待队列最多允许1000个线程在队列中等待
+#server.tomcat.max-connections: 20000 # 最大允许20000个链接被建立
+## 最大工作线程数，默认200, 4核8g内存，线程数经验值800
+#server.tomcat.threads.max: 1000 # 并发处理创建的最大的线程数量
+#server.tomcat.threads.min-spare: 100 # 最大空闲连接数，防止突发流量
+
+
+# 暴露所有的监控点
+management.endpoints.web.exposure.include: '*'
+# 定义Actuator访问路径
+management.endpoints.web.base-path: /actuator
+# 开启endpoint 关闭服务功能
+management.endpoint.shutdown.enabled: true

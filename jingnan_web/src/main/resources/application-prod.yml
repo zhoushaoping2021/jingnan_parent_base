@@ -1,0 +1,10 @@
+server:
+  port: 9301
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://8.133.188.83/jingnan_goods?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+# 生成静态页的位置
+pagepath: ~/static/items

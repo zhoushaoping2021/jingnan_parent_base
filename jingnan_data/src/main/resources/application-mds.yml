@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    base:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbcUrl: jdbc:mysql://127.0.0.1:3306/jingnan_all?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&rewriteBatchedStatements=true
+      username: root
+      password: root
+canal:
+  clients:
+    - hostname: 192.168.68.144
+      port: 11111
+      destination: example
+      username:
+      password:
+    - hostname: 192.168.68.144
+      port: 11111
+      destination: example2
+      username:
+      password:

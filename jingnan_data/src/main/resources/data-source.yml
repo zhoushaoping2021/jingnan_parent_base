@@ -1,0 +1,38 @@
+dataSources:
+  ds0: !!com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://192.168.68.144:3306/jingnan_all?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
+    username: admin
+    password: admin
+  ds1: !!com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://192.168.68.145:3306/jingnan_all?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
+    username: admin
+    password: admin
+
+shardingRule:
+  tables:
+    tb_order:
+      actualDataNodes: ds${0..1}.tb_order
+      databaseStrategy:
+        inline:
+          shardingColumn: id
+          algorithmExpression: ds${id.toLong() % 2}
+    tb_order_item:
+      actualDataNodes: ds${0..1}.tb_order_item
+      databaseStrategy:
+        inline:
+          shardingColumn: order_id
+          algorithmExpression: ds${order_id.toLong() % 2}
+    tb_user:
+      actualDataNodes: ds${0..1}.tb_user
+      databaseStrategy:
+        inline:
+          shardingColumn: username
+          algorithmExpression: ds${Math.abs(username.hashCode()) % 2}
+    tb_user_order_map:
+      actualDataNodes: ds${0..1}.tb_user_order_map
+      databaseStrategy:
+        inline:
+          shardingColumn: username
+          algorithmExpression: ds${Math.abs(username.hashCode()) % 2}

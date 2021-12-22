@@ -1,0 +1,81 @@
+package com.jn.search.service;
+
+import com.github.pagehelper.Page;
+import com.jn.pojo.Sku;
+
+import java.util.List;
+import java.util.Map;
+
+public interface SkuService {
+
+    /***
+     * 查询所有
+     * @return
+     */
+    List<Sku> findAll();
+
+    /**
+     * 根据ID查询
+     * @param id
+     * @return
+     */
+    Sku findById(String id);
+
+    /***
+     * 新增
+     * @param sku
+     */
+    void add(Sku sku);
+
+    /***
+     * 修改
+     * @param sku
+     */
+    void update(Sku sku);
+
+    /***
+     * 删除
+     * @param id
+     */
+    void delete(String id);
+
+    /***
+     * 多条件搜索
+     * @param searchMap
+     * @return
+     */
+    List<Sku> findList(Map<String, Object> searchMap);
+
+    /***
+     * 分页查询
+     * @param page
+     * @param size
+     * @return
+     */
+    Page<Sku> findPage(int page, int size);
+
+    /***
+     * 多条件分页查询
+     * @param searchMap
+     * @param page
+     * @param size
+     * @return
+     */
+    Page<Sku> findPage(Map<String, Object> searchMap, int page, int size);
+
+    /**
+     * 扣减库存, 增加销量
+     * @param skuId
+     * @param num
+     */
+    public void decrCount(String skuId, Integer num);
+
+    /**
+     * 恢复库存恢复销量
+     * @param skuId
+     * @param num
+     */
+    public void incrCount(String skuId, Integer num);
+
+    List<Sku> findBySpuId(String spuId);
+}
